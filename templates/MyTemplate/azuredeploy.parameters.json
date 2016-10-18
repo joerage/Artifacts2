@@ -20,9 +20,6 @@
     "artifactRepoUri": {
         "value": "https://xiaoying.visualstudio.com/DefaultCollection/_git/azure-devtestlabsdemo"
     },
-    "artifactRepoFolder": {
-        "value": ""
-    },
     "artifactRepoBranch": {
         "value": "master"
     },
