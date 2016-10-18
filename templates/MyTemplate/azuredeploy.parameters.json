@@ -3,13 +3,13 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "newLabName": {
-      "value": "MyLab1"
+      "value": "jraj-default"
     },
     "labVmShutDownTime": {
       "value": "21:00"
     },
     "maxAllowedVmsPerUser": {
-      "myvalue": 10
+      "value": 10
     },
     "maxAllowedVmsPerLab": {
       "value": 100
