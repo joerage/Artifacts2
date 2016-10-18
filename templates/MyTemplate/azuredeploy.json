@@ -10,9 +10,9 @@
     },
     "otherLabName": {
       "type": "string",
+      "defaultValue": "defaultFromtemplatefile",
       "metadata": {
-        "description": "The name of the new lab instance to be created",
-        "defaultValue": "defaultFromtemplatefile"
+        "description": "The name of the new lab instance to be created"
       }
     },
     "timeZoneId": {
