@@ -9,7 +9,7 @@
       "value": "21:00"
     },
     "maxAllowedVmsPerUser": {
-      "value": 10
+      "myvalue": 10
     },
     "maxAllowedVmsPerLab": {
       "value": 100
