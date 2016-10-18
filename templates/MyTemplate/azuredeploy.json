@@ -64,7 +64,7 @@
     },
     "artifactRepoFolder": {
       "type": "string",
-      "defaultValue": "AzureConDemo",
+      "defaultValue": "AzureConDemofromtemplatefile",
       "metadata": {
         "description": "Set 'artifact repository': the target folder in the repo."
       }
