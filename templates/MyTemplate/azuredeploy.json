@@ -26,7 +26,7 @@
       "type": "string",
       "minLength": 5,
       "maxLength": 5,
-      "defaultValue": "21:00",
+      "defaultValue": "23:00",
       "metadata": {
         "description": "Set 'Auto Shutdown' policy: The UTC time at which the Lab VMs will be automatically shutdown (E.g. 17:30, 20:00, 09:00)."
       }
@@ -34,7 +34,7 @@
     "maxAllowedVmsPerUser": {
       "type": "int",
       "minValue": 0,
-      "defaultValue": 10,
+      "defaultValue": 11,
       "metadata": {
         "description": "Set 'max VM allowed per user' policy: The maximum number of VMs allowed per user."
       }
@@ -42,7 +42,7 @@
     "maxAllowedVmsPerLab": {
       "type": "int",
       "minValue": 0,
-      "defaultValue": 100,
+      "defaultValue": 101,
       "metadata": {
         "description": "Set 'Total VMs allowed in Lab' policy: The maximum number of VMs allowed per lab."
       }
