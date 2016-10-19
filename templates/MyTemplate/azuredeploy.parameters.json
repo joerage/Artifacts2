@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "newLabName": {
-      "value": "jraj-default"
+      "value": "jraj-defaultyes"
     },
     "labVmShutDownTime": {
       "value": "21:00"
