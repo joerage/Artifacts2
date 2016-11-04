@@ -21,22 +21,22 @@
         "value": "https://xiaoying.visualstudio.com/DefaultCollection/_git/azure-devtestlabsdemo"
     },
     "artifactRepoBranch": {
-        "value": "GEN-UNIQUE4"
+        "value": "GEN-UNIQUE-4"
     },
     "artifactRepoDisplayName": {
-        "value": "FabrikamPrivateRepo"
+        "value": "GEN-SSH-PUB-KEY"
     },
     "artifactRepoSecurityToken": {
         "value": "r6q3xzzswszoync4qm7kn3abrovvbox3ar4zabzmkzortjiiutua" 
     },
     "artifactRepoType": {
-        "value": "VsoGit"
+        "value": "GEN-PASSWORD"
     },
     "pilotVMName": {
-      "value": "TestBox001"
+      "value": "GEN-PASSWORD3"
     },
     "VMSize": {
-      "value": "Standard_DS1_v2"
+      "value": "2GEN-PASSWORD"
     },
     "VMStorageType": {
       "value": "Premium"
