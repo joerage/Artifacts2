@@ -21,7 +21,7 @@
         "value": "https://xiaoying.visualstudio.com/DefaultCollection/_git/azure-devtestlabsdemo"
     },
     "artifactRepoBranch": {
-        "value": "GEN-UNIQUE"
+        "value": "GEN-UNIQUE4"
     },
     "artifactRepoDisplayName": {
         "value": "FabrikamPrivateRepo"
