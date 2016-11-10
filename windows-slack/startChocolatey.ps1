@@ -11,6 +11,10 @@
     [string] $password
 )
 
+
+WriteLog $("UserName: " + [Environment]::UserName)
+WriteLog $("UserDomainName: " + [Environment]::UserDomainName)
+WriteLog $("MachineName: " + [Environment]::MachineName)
 Write-Host "Password is $password"
 
 $secPassword = ConvertTo-SecureString $password -AsPlainText -Force
