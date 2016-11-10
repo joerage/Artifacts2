@@ -47,6 +47,10 @@ Param(
     $RawPackagesList
 )
 
+WriteLog $("UserName: " + [Environment]::UserName)
+WriteLog $("UserDomainName: " + [Environment]::UserDomainName)
+WriteLog $("MachineName: " + [Environment]::MachineName)
+
 ##################################################################################################
 
 #
