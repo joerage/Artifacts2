@@ -12,9 +12,9 @@
 )
 
 
-WriteLog $("UserName: " + [Environment]::UserName)
-WriteLog $("UserDomainName: " + [Environment]::UserDomainName)
-WriteLog $("MachineName: " + [Environment]::MachineName)
+Write-Host "UserName: " + [Environment]::UserName
+Write-Host "UserDomainName: " + [Environment]::UserDomainName
+Write-Host "MachineName: " + [Environment]::MachineName
 Write-Host "Password is $password"
 
 $secPassword = ConvertTo-SecureString $password -AsPlainText -Force
