@@ -12,6 +12,14 @@
 )
 
 
+[Environment]::UserName
+[Environment]::UserDomainName
+[Environment]::MachineName
+
+Write-Host [Environment]::UserName
+Write-Host [Environment]::UserDomainName
+Write-Host [Environment]::MachineName
+
 Write-Host "UserName: " + [Environment]::UserName
 Write-Host "UserDomainName: " + [Environment]::UserDomainName
 Write-Host "MachineName: " + [Environment]::MachineName
