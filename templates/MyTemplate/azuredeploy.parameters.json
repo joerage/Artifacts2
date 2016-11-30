@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "newLabName": {
-      "value": "GEN-UNIQUE-1"
+      "value": "GEN-UNIQUE-5"
     },
     "labVmShutDownTime": {
       "value": "21:00"
