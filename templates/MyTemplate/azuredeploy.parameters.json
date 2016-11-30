@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "newLabName": {
-      "value": "jraj-defaultyes"
+      "value": "GEN-UNIQUE-1"
     },
     "labVmShutDownTime": {
       "value": "21:00"
@@ -21,7 +21,7 @@
         "value": "https://xiaoying.visualstudio.com/DefaultCollection/_git/azure-devtestlabsdemo"
     },
     "artifactRepoBranch": {
-        "value": "GEN-UNIQUE-45"
+        "value": "GEN-UNIQUE-1"
     },
     "artifactRepoDisplayName": {
         "value": "GEN-SSH-PUB-KEY"
