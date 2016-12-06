@@ -15,7 +15,6 @@
             "type": "string",
             "displayName": "Name",
             "description": "The name of the container, for example: MyMongo",
-            "allowEmpty": true,
             "defaultValue": ""
         },
         "dockerOptions": {
