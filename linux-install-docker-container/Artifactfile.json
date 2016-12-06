@@ -16,17 +16,17 @@
             "displayName": "Name",
             "description": "The name of the container, for example: MyMongo"
         },
-        "image": {
-            "type": "string",
-            "displayName": "Image",
-            "description": "The name of the Docker image to be installed, for example: Jenkins, from Docker Hub."
-        },
         "dockerOptions": {
             "type": "string",
             "displayName": "Docker Options",
             "description": "Additional options that affect the way in which Docker starts the container, for example: -p 27017:27017.",
             "allowEmpty": true,
             "defaultValue": ""
+        },
+        "image": {
+            "type": "string",
+            "displayName": "Image",
+            "description": "The name of the Docker image to be installed, for example: Jenkins, from Docker Hub."
         },
         "imageArguments": {
             "type": "string",
