@@ -6,8 +6,8 @@ set -e
 # Arguments:
 #
 # $1    Container name
-# $2    Image name
-# $3    Docker run options
+# $2    Docker run options
+# $3    Image name
 # $4    Additional image arguments
 #
 ###
@@ -27,9 +27,9 @@ else
 fi
 
 # Docker run syntax: docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
-#                               |__1-3__| |_2_| |_______ 4_______|
+#                               |__1-2__| |_3_| |_______ 4_______|
 
-cmd="docker run $NAME_ARG $3 -d $2 $4"
+cmd="docker run $NAME_ARG $2 -d $3 $4"
 
 echo "Running command: $cmd"
 eval $cmd
