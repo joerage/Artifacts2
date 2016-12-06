@@ -14,13 +14,12 @@
         "name": {
             "type": "string",
             "displayName": "Name",
-            "description": "The name of the container, for example: MyMongo",
-            "defaultValue": ""
+            "description": "The name of the container, for example: MyMongo"
         },
         "dockerOptions": {
             "type": "string",
             "displayName": "Docker Options",
-            "description": "Additional options that affect the way in which Docker starts the container, for example: -p 27018:27018.",
+            "description": "Additional options that affect the way in which Docker starts the container, for example: -p 27017:27017.",
             "allowEmpty": true,
             "defaultValue": ""
         },
