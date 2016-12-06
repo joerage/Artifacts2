@@ -20,7 +20,7 @@
         "dockerOptions": {
             "type": "string",
             "displayName": "Docker Options",
-            "description": "Additional options that affect the way in which Docker starts the container, for example: -p 27017:27017.",
+            "description": "Additional options that affect the way in which Docker starts the container, for example: -p 27018:27018.",
             "allowEmpty": true,
             "defaultValue": ""
         },
