@@ -26,10 +26,9 @@ else
     NAME_ARG=" --name $1"
 fi
 
-# Docker run syntax: docker run [OPTIONS] IMAGE:TAG [COMMAND] [ARG...]
-#                               |__1-2__| |___3___| |_______ 4_______|
+# Docker run syntax: docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 
-cmd="docker run $NAME_ARG $3 -d $2 $4"
+cmd="docker run $NAME_ARG $3 $2 -d $4"
 
 echo "Running command: $cmd"
 eval $cmd
