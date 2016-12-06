@@ -14,9 +14,7 @@
         "name": {
             "type": "string",
             "displayName": "Name",
-            "description": "The name of the container, for example: MyMongo",
-            "allowEmpty": true,
-            "defaultValue": ""
+            "description": "The name of the container, for example: MyMongo"
         },
         "image": {
             "type": "string",
