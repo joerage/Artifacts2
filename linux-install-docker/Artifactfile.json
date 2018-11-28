@@ -1,6 +1,6 @@
 {
     "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2015-01-01/dtlArtifacts.json",
-    "title": "MY Docker",
+    "title": "Password update",
     "publisher": "Microsoft",
     "description": "MY Install Docker on Linux",
     "tags": [
