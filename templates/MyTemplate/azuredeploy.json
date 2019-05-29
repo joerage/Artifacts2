@@ -1,226 +1,152 @@
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "newLabName": {
+    "keyVaultName": {
       "type": "string",
       "metadata": {
-        "description": "The name of the new lab instance to be created"
+        "description": "Specifies the name of the key vault."
       }
     },
-    "otherLabName": {
+    "location": {
       "type": "string",
-      "defaultValue": "defaultFromtemplatefile",
+      "defaultValue": "[resourceGroup().location]",
       "metadata": {
-        "description": "The name of the new lab instance to be created"
+        "description": "Specifies the Azure location where the key vault should be created."
       }
     },
-    "timeZoneId": {
+    "enabledForDeployment": {
+      "type": "bool",
+      "defaultValue": false,
+      "allowedValues": [
+        true,
+        false
+      ],
+      "metadata": {
+        "description": "Specifies whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault."
+      }
+    },
+    "enabledForDiskEncryption": {
+      "type": "bool",
+      "defaultValue": false,
+      "allowedValues": [
+        true,
+        false
+      ],
+      "metadata": {
+        "description": "Specifies whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys."
+      }
+    },
+    "enabledForTemplateDeployment": {
+      "type": "bool",
+      "defaultValue": false,
+      "allowedValues": [
+        true,
+        false
+      ],
+      "metadata": {
+        "description": "Specifies whether Azure Resource Manager is permitted to retrieve secrets from the key vault."
+      }
+    },
+    "tenantId": {
       "type": "string",
-      "defaultValue": "UTC",
+      "defaultValue": "[subscription().tenantId]",
       "metadata": {
-        "description": "The timezone of the lab."
+        "description": "Specifies the Azure Active Directory tenant ID that should be used for authenticating requests to the key vault. Get it by using Get-AzSubscription cmdlet."
       }
     },
-    "labVmShutDownTime": {
+    "objectId": {
       "type": "string",
-      "minLength": 5,
-      "maxLength": 5,
-      "defaultValue": "23:45",
       "metadata": {
-        "description": "Set 'Auto Shutdown' policy: The UTC time at which the Lab VMs will be automatically shutdown (E.g. 17:30, 20:00, 09:00)."
+        "description": "Specifies the object ID of a user, service principal or security group in the Azure Active Directory tenant for the vault. The object ID must be unique for the list of access policies. Get it by using Get-AzADUser or Get-AzADServicePrincipal cmdlets."
       }
     },
-    "maxAllowedVmsPerUser": {
-      "type": "int",
-      "minValue": 0,
-      "defaultValue": 11,
+    "keysPermissions": {
+      "type": "array",
+      "defaultValue": [
+        "list"
+      ],
       "metadata": {
-        "description": "Set 'max VM allowed per user' policy: The maximum number of VMs allowed per user."
+        "description": "Specifies the permissions to keys in the vault. Valid values are: all, encrypt, decrypt, wrapKey, unwrapKey, sign, verify, get, list, create, update, import, delete, backup, restore, recover, and purge."
       }
     },
-    "maxAllowedVmsPerLab": {
-      "type": "int",
-      "minValue": 0,
-      "defaultValue": 101,
+    "secretsPermissions": {
+      "type": "array",
+      "defaultValue": [
+        "list"
+      ],
       "metadata": {
-        "description": "Set 'Total VMs allowed in Lab' policy: The maximum number of VMs allowed per lab."
+        "description": "Specifies the permissions to secrets in the vault. Valid values are: all, get, list, set, delete, backup, restore, recover, and purge."
       }
     },
-    "allowedVmSizes": {
+    "skuName": {
       "type": "string",
-      "defaultValue": "\"Standard_DS1_v2\", \"Standard_DS3_v2\", \"Standard_DS11_v2\"",
-      "minLength": 3,
+      "defaultValue": "Standard",
+      "allowedValues": [
+        "Standard",
+        "Premium"
+      ],
       "metadata": {
-        "description": "Set 'allowed VM sizes' policy: A comma-separated list of VM sizes that are allowed in the lab."
+        "description": "Specifies whether the key vault is a standard vault or a premium vault."
       }
     },
-    "artifactRepoUri": {
+    "secretName": {
       "type": "string",
-      "defaultValue": "https://xiaoying.visualstudio.com/DefaultCollection/_git/azure-devtestlabsdemo",
       "metadata": {
-        "description": "Set 'artifact repository': the Git clone URI."
+        "description": "Specifies the name of the secret that you want to create."
       }
     },
-    "artifactRepoFolder": {
-      "type": "string",
-      "defaultValue": "AzureConDemofromtemplatefile",
-      "metadata": {
-        "description": "Set 'artifact repository': the target folder in the repo."
-      }
-    },
-    "artifactRepoBranch": {
-      "type": "string",
-      "defaultValue": "master",
-      "metadata": {
-        "description": "Set 'artifact repository': the target branch in the repo."
-      }
-    },
-    "artifactRepoDisplayName": {
-      "type": "string",
-      "defaultValue": "FabrikamPrivateRepo",
-      "metadata": {
-        "description": "Set 'artifact repository': the display name of the repo."
-      }
-    },
-    "artifactRepoSecurityToken": {
+    "secretValue": {
       "type": "securestring",
-      "defaultValue": "r6q3xzzswszoync4qm7kn3abrovvbox3ar4zabzmkzortjiiutua",
       "metadata": {
-        "description": "Set 'artifact repository': the personal access token of the repo."
-      }
-    },
-    "artifactRepoType": {
-      "type": "string",
-      "defaultValue": "VsoGit",
-      "metadata": {
-        "description": "Set 'artifact repository': the Git repo type."
-      }
-    },
-    "pilotVMName": {
-      "type": "string",
-      "defaultValue": "TestBox001",
-      "metadata": {
-        "description": "VM #1: Its name."
-      }
-    },
-    "VMSize": {
-      "type": "string",
-      "defaultValue": "Standard_DS1_v2",
-      "metadata": {
-        "description": "The size of all the VMs to be created in the lab."
-      }
-    },
-    "VMStorageType": {
-      "type": "string",
-      "defaultValue": "Premium",
-      "metadata": {
-        "description": "The storage type ('Premium' or 'Standard') of all the VMs to be created in the lab."
-      }
-    },
-    "username": {
-      "type": "string",
-      "defaultValue": "demolab",
-      "metadata": {
-        "description": "The username for the local account that will be created on all the new VMs."
-      }
-    },
-    "password": {
-      "type": "securestring",
-      "defaultValue": "<3DevTestLabs!",
-      "metadata": {
-        "description": "The password for the local account that will be created on all the new VMs."
-      }
-    },
-    "devBoxTemplateName": {
-      "type": "string",
-      "defaultValue": "Fabrikam Dev Box",
-      "metadata": {
-        "description": "Name of custom image #1."
-      }
-    },
-    "devBoxTemplateDescription": {
-      "type": "string",
-      "defaultValue": "Fabrikam Dev box environment",
-      "metadata": {
-        "description": "Description of custom image #1."
-      }
-    },
-    "testBoxTemplateName": {
-      "type": "string",
-      "defaultValue": "Fabrikam Test Box",
-      "metadata": {
-        "description": "Name of custom image #2."
-      }
-    },
-    "testBoxTemplateDescription": {
-      "type": "string",
-      "defaultValue": "Fabrikam Test box environment",
-      "metadata": {
-        "description": "Description of custom image #2."
-      }
-    },
-    "goldenImageTemplateName": {
-      "type": "string",
-      "defaultValue": "Fabrikam Latest Testing Build 0219",
-      "metadata": {
-        "description": "Name of custom image #3."
-      }
-    },
-    "goldenImageTemplateDescription": {
-      "type": "string",
-      "defaultValue": "Latest testing build 100219 from VSO",
-      "metadata": {
-        "description": "Description of custom image #3."
-      }
-    },
-    "devBoxVMName": {
-      "type": "string",
-      "defaultValue": "DevBox001",
-      "metadata": {
-        "description": "Name of VM #2 (using custom image #1)."
-      }
-    },
-    "testBoxVMName": {
-      "type": "string",
-      "defaultValue": "TestBox002",
-      "metadata": {
-        "description": "Name of VM #3 (using custom image #2)."
-      }
-    },
-    "goldenImageVMName": {
-      "type": "string",
-      "defaultValue": "TestLatest0219",
-      "metadata": {
-        "description": "Name of VM #4 (using custom image #3)."
+        "description": "Specifies the value of the secret that you want to create."
       }
     }
-  },
-  "variables": {
-    "labVirtualNetworkName": "[concat('Dtl', parameters('newLabName'))]"
   },
   "resources": [
     {
-      "apiVersion": "2016-05-15",
-      "type": "Microsoft.DevTestLab/labs",
-      "name": "[parameters('newLabName')]",
-      "location": "[resourceGroup().location]",
-      "resources": [
-        {
-          "apiVersion": "2016-05-15",
-          "name": "[variables('labVirtualNetworkName')]",
-          "type": "virtualnetworks",
-          "dependsOn": [
-            "[resourceId('Microsoft.DevTestLab/labs', parameters('newLabName'))]"
-          ]
+      "type": "Microsoft.KeyVault/vaults",
+      "name": "[parameters('keyVaultName')]",
+      "apiVersion": "2018-02-14",
+      "location": "[parameters('location')]",
+      "properties": {
+        "enabledForDeployment": "[parameters('enabledForDeployment')]",
+        "enabledForDiskEncryption": "[parameters('enabledForDiskEncryption')]",
+        "enabledForTemplateDeployment": "[parameters('enabledForTemplateDeployment')]",
+        "tenantId": "[parameters('tenantId')]",
+        "accessPolicies": [
+          {
+            "objectId": "[parameters('objectId')]",
+            "tenantId": "[parameters('tenantId')]",
+            "permissions": {
+              "keys": "[parameters('keysPermissions')]",
+              "secrets": "[parameters('secretsPermissions')]"      
+            }
+          }
+        ],
+        "sku": {
+          "name": "[parameters('skuName')]",
+          "family": "A"
+        },
+        "networkAcls": {
+          "value": {
+            "defaultAction": "Allow",
+            "bypass": "AzureServices"
+          }
         }
-      ]
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults/secrets",
+      "name": "[concat(parameters('keyVaultName'), '/', parameters('secretName'))]",
+      "apiVersion": "2018-02-14",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', parameters('keyVaultName'))]"
+      ],
+      "properties": {
+        "value": "[parameters('secretValue')]"
+      }
     }
-  ],
-  "outputs": {
-    "labId": {
-      "type": "string",
-      "value": "[resourceId('Microsoft.DevTestLab/labs', parameters('newLabName'))]"
-    }
-  }
+  ]
 }
