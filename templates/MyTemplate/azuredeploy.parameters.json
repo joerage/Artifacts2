@@ -1,78 +1,18 @@
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "newLabName": {
-      "value": "GEN-UNIQUE-5"
+    "keyVaultName": {
+      "value": "GEN-UNIQUE"
     },
-    "labVmShutDownTime": {
-      "value": "21:00"
+    "objectId": {
+      "value": "GEN-AZUREAD-OBJECTID"
     },
-    "maxAllowedVmsPerUser": {
-      "value": 10
+    "secretName": {
+      "value": "GEN-UNIQUE"
     },
-    "maxAllowedVmsPerLab": {
-      "value": 100
-    },
-    "allowedVmSizes": {
-      "value": "\"Standard_DS1_v2\", \"Standard_DS11_v2\""
-    },
-    "artifactRepoUri": {
-        "value": "https://xiaoying.visualstudio.com/DefaultCollection/_git/azure-devtestlabsdemo"
-    },
-    "artifactRepoBranch": {
-        "value": "GEN-UNIQUE-1"
-    },
-    "artifactRepoDisplayName": {
-        "value": "GEN-SSH-PUB-KEY"
-    },
-    "artifactRepoSecurityToken": {
-        "value": "r6q3xzzswszoync4qm7kn3abrovvbox3ar4zabzmkzortjiiutua" 
-    },
-    "artifactRepoType": {
-        "value": "GEN-PASSWORD"
-    },
-    "pilotVMName": {
-      "value": "GEN-PASSWORD3"
-    },
-    "VMSize": {
-      "value": "2GEN-PASSWORD"
-    },
-    "VMStorageType": {
-      "value": "Premium"
-    },
-    "username": {
-      "value": "demolab"
-    },
-    "password": {
-      "value": "<3DevTestLabs!"
-    },
-    "devBoxTemplateName": {
-      "value": "Fabrikam Dev Box"
-    },
-    "devBoxTemplateDescription": {
-      "value": "Fabrikam Dev box environment"
-    },
-    "testBoxTemplateName": {
-      "value": "Fabrikam Test Box"
-    },
-    "testBoxTemplateDescription": {
-      "value": "Fabrikam Test box environment"
-    },
-    "goldenImageTemplateName": {
-      "value": "Fabrikam Latest Testing Build 0219"
-    },
-    "goldenImageTemplateDescription": {
-      "value": "Latest testing build 100219 from VSO"
-    },
-    "devBoxVMName": {
-      "value": "DevBox001"
-    },
-    "testBoxVMName": {
-      "value": "TestBox002"
-    },
-    "goldenImageVMName": {
-      "value": "TestLatest0219"
+    "secretValue": {
+      "value": "GEN-UNIQUE"
     }
   }
 }
