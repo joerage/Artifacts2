@@ -8,13 +8,16 @@
             "metadata": {
                 "description": "Location for all resources."
             }
+        },
+        "name": {
+            "type": "string"
         }
     },
     "resources": [
         {
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2018-11-01",
-            "name": "jraj-test",
+            "name": "[parameters('name')]",
             "location": "[parameters('location')]",
             "sku": {
                 "name": "Standard_LRS"
