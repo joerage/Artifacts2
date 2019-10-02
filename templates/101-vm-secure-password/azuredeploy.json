@@ -143,7 +143,14 @@
           "osProfile": {
             "computerName": "[variables('vmName')]",
             "adminUsername": "[parameters('adminUsername')]",
-            "adminPassword": "[parameters('adminPassword')]"
+            "adminPassword": {
+                "reference": {
+                    "keyVault": {
+                        "id": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/jraj-rg/providers/Microsoft.KeyVault/vaults/jraj-keyvault"
+                        },
+                    "secretName": "mySecret"
+                  }
+            }
           },
           "storageProfile": {
             "imageReference": {
