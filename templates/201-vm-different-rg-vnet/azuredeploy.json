@@ -103,7 +103,7 @@
     },
     "virtualNetworkResourceGroup": {
       "type": "string",
-      "defaultValue": "jraj-rg",
+      "defaultValue": "jraj-somewhererg",
       "metadata": {
         "description": "Resource Group VNET is deployed in"
       }
