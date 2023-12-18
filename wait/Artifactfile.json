@@ -5,10 +5,7 @@
   "tags": ["Windows", "Slack"],
   "iconUri": "https://chocolatey.org/content/packageimages/slack.1.0.0.png",
   "targetOsType": "Windows",
-  "variables": {
-    "scriptName": "wait.ps1"
-  },
   "runCommand": {
-    "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass -File wait.ps1 ',  variables('scriptName'))]"
+    "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass -File ', 'wait.ps1')]"
   }
 }
